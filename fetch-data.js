@@ -5,28 +5,30 @@ async function fetchUserData() {
 
     try {
         const response = await fetch(apiUrl);
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
         const users = await response.json();
 
-        // clear loading message
+        // Clear loading text
         dataContainer.innerHTML = '';
 
         // Create and populate the user list
         const userList = document.createElement('ul');
-        users.array.forEach(user => {
-            const listItem = document.createElement('li');
-            listItem.textContent = user.name;
-            userList.appendChild(listItem);
-        });
 
+        users.forEach(user => {
+            const li = document.createElement('li');
+            li.textContent = user.name;
+            userList.appendChild(li);
+        });
         //  append the list to the data container
         dataContainer.appendChild(userList);
     } catch (error) {
-        // Display error message
-        dataContainer.innerHTML = '',
-            dataContainer.textContent = 'Failed to load user data.';
+        dataContainer.innerHTML = 'Failed to load user data.';
+        console.error('Error fetching user data:', error);
     }
-
 }
-
 // Run the async function when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', fetchUserData);
