@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Display feedback
         feedbackDiv.style.display = "block";
         if (isValid) {
-            feedbackDiv.textContent = "Resgistration successful";
+            feedbackDiv.textContent = "Resgistration successful!";
             feedbackDiv.style.color = "#28a745" // green
         } else {
             feedbackDiv.innerHTML = messages.join("<br>");
