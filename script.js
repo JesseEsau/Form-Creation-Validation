@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Initialize validation status and message
         let isValid = true;
-        let message = [];
+        let messages = [];
 
         // Username validation
         if (username.length < 3) {
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
             feedbackDiv.textContent = "Resgistration successful";
             feedbackDiv.style.color = "#28a745" // green
         } else {
-            feedbackDiv.innerHTML = message.join("<br>");
+            feedbackDiv.innerHTML = messages.join("<br>");
             feedbackDiv.style.color = "#dc3545" // red
         }
 
